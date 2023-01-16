@@ -1,7 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,Navigate } from "react-router-dom";
 import Login from "./Pages/Login";
 import Courses from "./Pages/Courses";
 import Dash from "./Pages/Dash";
@@ -17,6 +17,7 @@ function App() {
        <Route element={<Dash/>} path="/dash"/>
        <Route element={<Courses/>} path="/courses"/>
        <Route element={<Upload/>} path="/upload"/>
+       <Route element={<Navigate to="/"/>} path="*"/>
       </Routes>
     </>
   );
