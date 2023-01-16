@@ -7,7 +7,7 @@ import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import BeatLoader from "react-spinners/BeatLoader";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../Function/firebase-config";
+import { auth } from "../Functions/firebase-config";
 const Login = () => {
   const [mail, setmail] = useState("");
   const [pass, setpass] = useState("");
