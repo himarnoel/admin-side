@@ -1,10 +1,10 @@
 import React from "react";
 
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
 import { FiBookOpen } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { Logout } from "../../Function/auth";
+import { Logout } from "../Functions/auth";
 import { GoCloudUpload } from "react-icons/go";
 const Dash = () => {
   return (
