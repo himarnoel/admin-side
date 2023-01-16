@@ -1,9 +1,17 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import { MdArrowForwardIos } from "react-icons/md";
 
-const Upload = () => {
+const Upload = () => {  
+const location = useLocation();
+const data = location.state;
+
+const getter=()=>{
+  
+}
+
+
   return (
     <>
       <div className="pb-28">
@@ -41,7 +49,7 @@ const Upload = () => {
           <div className="w-full px-10 py-10 h-10 border-b flex justify-between items-center">
             <div className="sdfa">
               <p className="text-base font-semibold">
-                CSC 111 - Introduction to Computer Science
+               {data.course_code}- {data.course_title}
               </p>{" "}
               <p>For the 2022/2023 Academic Session</p>
             </div>
