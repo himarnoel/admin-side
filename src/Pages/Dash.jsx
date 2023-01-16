@@ -10,22 +10,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Functions/firebase-config";
 const Dash = () => {
   const nav = useNavigate();
-  const [data, setdata] = useState([]);
-  const getCourses = () => {
-    const courseref = collection(db, "Courses");
-    getDocs(courseref)
-      .then((res) => {
-        console.log(res.docs.map((doc) => doc.data()));
-        setdata(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      })
-      .catch((e) => {
-        console.log(e);
-        toast.error("Network errorr");
-      });
-  };
-  useEffect(() => {
-    getCourses();
-  }, []);
+  
 
   return (
     <div>
