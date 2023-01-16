@@ -23,6 +23,7 @@ const Login = () => {
         })
         .catch((e) => {
           setbol(false);
+          toast.error("Network Error")
           console.log(e);
         });
     } else {
@@ -42,44 +43,42 @@ const Login = () => {
         ""
       )}
       <div className="">
-        <div className="fixed py-2 px-5 lg:py-1 md:px-1 bg-white shadow-sm md:shadow-md lg:shadow-md    w-full">
-          <div className="flex font-bold  items-center justify-between  lg:px-[7rem]">
+      <div className="">
+        <div className="fixed py-2 px-5 lg:py-1 md:px-1 bg-[#F2F2F2]   shadow-sm md:shadow-md lg:shadow-md lg:shadow-[#858585]    w-full">
+          <div className="flex  items-center justify-between  lg:px-[6rem]">
             <div className="flex items-center">
-              <img src={logo} alt="" className="object-contain w-10 lg:" />{" "}
+              <img src={logo} alt="" className="object-contain w-10 lg:" />
               <span className="flex flex-col leading-[1.2rem] pl-2">
-                <span>Landmark University Student Portal</span>
+                <span className="flex flex-col font-bold">
+                  Landmark University
+                  <span>Student Portal</span>
+                </span>
               </span>
             </div>
+          
           </div>
         </div>
+      </div>
       </div>
       <div className="flex justify-center items-center flex-col h-screen">
         <div className="flex flex-col items-center justify-center    mx-auto  w-[20rem] h-[20rem]  md:w-[26rem] md:h-[22rem] lg:w-[22rem] lg:h-[20rem] sm:w-[24rem] xl:h-[20rem] xl:w-[25rem]   bg-white  rounded-lg">
           <form className="xl:w-[22rem] w-[17rem] bg-white  flex flex-col items-center justify-evenly h-full md:w-[20rem]">
             <div className="relative  w-full mt-4 xl:mt-5">
-              <label htmlFor="">username</label>
+              <label htmlFor="">Email</label>
               <AiOutlineUser
                 size={20}
                 className="absolute top-8 right-2 text-green-600 "
               />
               <input
-                id="username"
-                name="usernames"
-                placeholder="aremu.charity"
+                id="email"
+                name="email"
+                placeholder="ade.fiyin@lmu.edu.ng"
                 className={`border p-2 rounded-md w-full focus:border-gray-500  lg:p-[0.4rem]  `}
-                type="text"
+                type="email"
                 onChange={(e) => setmail(e.target.value)}
-                // value={formik.values.username}
-                // onBlur={formik.handleBlur}
-                // required
+            
               />
-              {/* {formik.errors.username && formik.touched.username ? (
-                    <p className="text-red-500 text-sm ">
-                      {formik.errors.username}
-                    </p>
-                  ) : (
-                    ""
-                  )} */}
+             
             </div>
             <div className="relative w-full ">
               <label htmlFor="">Password</label>
@@ -89,22 +88,15 @@ const Login = () => {
               />
               <input
                 name="password"
-                id="passwords"
-                placeholder="aremu.charity"
+                id="password"
+                placeholder="•••••••••••"
                 className={`border p-2 rounded-md w-full  focus:outline-[#D1D1D1]  `}
                 type="password"
                 onChange={(e) => setpass(e.target.value)}
-                // value={formik.values.password}
-                // onBlur={formik.handleBlur}
+           
                 required
               />
-              {/* {formik.errors.password && formik.touched.password ? (
-                    <p className="text-red-500 text-sm ">
-                      {formik.errors.password}
-                    </p>
-                  ) : (
-                    ""
-                  )} */}
+        
             </div>
 
             <button
