@@ -4,8 +4,9 @@ import { Link, useLocation } from "react-router-dom";
 import { MdArrowForwardIos } from "react-icons/md";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { auth, db } from "../Functions/firebase-config";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { RiArrowDownSLine } from "react-icons/ri";
+import BeatLoader from "react-spinners/BeatLoader";
 import { onAuthStateChanged } from "firebase/auth";
 
 const Upload = () => {
@@ -18,7 +19,7 @@ const Upload = () => {
   const [semester, usesemester] = useState("");
   const [session, usesession] = useState("");
   const [uid, setuid] = useState("");
-  
+  const [value, setvalue] = useState(0);
   useEffect(() => {
     getter();
     onAuthStateChanged(auth, (currentuser) => {
@@ -63,21 +64,21 @@ const Upload = () => {
           doc.matric_no == name ? { ...doc, score: "A" } : doc
         )
       );
-    } else if (e.target.value >= 69) {
+    } else if (e.target.value >= 60) {
       setscore("B");
       setcourses(
         courses.map((doc) =>
           doc.matric_no == name ? { ...doc, score: "B" } : doc
         )
       );
-    } else if (e.target.value >= 59) {
+    } else if (e.target.value >= 50) {
       setscore("C");
       setcourses(
         courses.map((doc) =>
           doc.matric_no == name ? { ...doc, score: "C" } : doc
         )
       );
-    } else if (e.target.value >= 49) {
+    } else if (e.target.value >= 40) {
       setscore("D");
       setcourses(
         courses.map((doc) =>
@@ -94,6 +95,7 @@ const Upload = () => {
 
   const Uploader = () => {
     if (semester !== "" && session !== "") {
+      setbol(true);
       for (let index = 0; index < courses.length; index++) {
         const data = location.state;
         const docref = doc(db, "Result", courses[index].id, session, semester);
@@ -107,7 +109,15 @@ const Upload = () => {
             },
           ],
         };
-        setDoc(docref, dat);
+        setDoc(docref, dat)
+          .then((res) => {
+            setbol(false);
+            toast.success("Successful");
+          })
+          .catch((e) => {
+            setbol(false);
+            toast.error("Error");
+          });
         usesemester("");
         usesession("");
       }
@@ -118,6 +128,14 @@ const Upload = () => {
 
   return (
     <>
+      {bol ? (
+        <div className="absolute flex justify-center items-center z-10 top-0   h-screen bg-white/75 left-0 right-0">
+          <BeatLoader color="#16A34A" size={30} />
+        </div>
+      ) : (
+        ""
+      )}
+      <ToastContainer autoClose={3000} />
       <div className="pb-28">
         <div className="fixed py-2 px-5 lg:py-1 md:px-1 bg-[#F2F2F2] shadow-sm md:shadow-md lg:shadow-md lg:shadow-[#858585]    w-full">
           <div className="flex  items-center justify-between  lg:px-[6rem]">
@@ -280,7 +298,6 @@ const Upload = () => {
                       min="0"
                       name={arr.matric_no}
                       onChange={(e) => Score(e)}
-                      
                     />
                   </td>
                   <td>{arr?.score || "F"}</td>
