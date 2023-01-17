@@ -72,7 +72,7 @@ const Login = () => {
               <input
                 id="email"
                 name="email"
-                placeholder="ade.fiyin@lmu.edu.ng"
+                placeholder="admin@lmu.edu.ng"
                 className={`border p-2 rounded-md w-full focus:border-gray-500  lg:p-[0.4rem]  `}
                 type="email"
                 onChange={(e) => setmail(e.target.value)}
