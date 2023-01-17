@@ -14,7 +14,6 @@ const Courses = () => {
     const courseref = collection(db, "Courses");
     getDocs(courseref)
       .then((res) => {
-     
         setdata(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         setbol(false);
       })
@@ -82,13 +81,13 @@ const Courses = () => {
               {data.map((arr, i) => (
                 <tr class=" text-[#197BD2] even:bg-transparent odd:bg-[#E1E1E1] border-b  hover:bg-gray-50  text-center font-semibold bg-[#E1E1E1] ">
                   <td class="w-4 p-4">
-                    <Link to="/upload" state={{course_code:arr.course_code,course_title:arr.course_title}}>{i + 1}</Link>
+                    <Link to="/upload" state={{course_code:arr.course_code,course_title:arr.course_title,unit:arr.unit}}>{i + 1}</Link>
                   </td>
                   <td class="px-6 py-4 ">
-                    <Link to="/upload"  state={{course_code:arr.course_code,course_title:arr.course_title}}>{arr.course_code}</Link>
+                    <Link to="/upload"  state={{course_code:arr.course_code,course_title:arr.course_title,unit:arr.unit}}>{arr.course_code}</Link>
                   </td>
                   <td class="px-6 py-4 ">
-                    <Link   to="/upload"  state={{course_code:arr.course_code,course_title:arr.course_title}}>{arr.course_title}</Link>
+                    <Link   to="/upload"  state={{course_code:arr.course_code,course_title:arr.course_title,unit:arr.unit}}>{arr.course_title}</Link>
                   </td>
                 </tr>
               ))}
