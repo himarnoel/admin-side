@@ -14,7 +14,7 @@ const Courses = () => {
     const courseref = collection(db, "Courses");
     getDocs(courseref)
       .then((res) => {
-        console.log(res.docs.map((doc) => doc.data()));
+     
         setdata(res.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         setbol(false);
       })
